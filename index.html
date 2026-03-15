@@ -133,6 +133,11 @@
     align-items: center; justify-content: center; gap: 0.5rem;
     background: var(--card-bg); color: var(--muted); font-size: 0.85rem; font-style: italic;
   }
+  
+  .portrait-card {border-radius: 16px;overflow: hidden;border: 1px solid var(--divider);transition: border-color 0.3s;}
+  .portrait-card:hover { border-color: var(--accent-light); }
+  .portrait-card img {width: 100%;aspect-ratio: 1 / 1;object-fit: cover;object-position: center 15%;display: block;}
+  
   .dog-card .dog-placeholder span.paw { font-size: 2.5rem; filter: grayscale(0.3); }
   .dog-card .dog-caption { padding: 1rem 1.2rem; text-align: center; }
   .dog-card .dog-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink); }
@@ -304,6 +309,9 @@
       </div>
     </div>
     <div class="about-sidebar fade-in stagger-2">
+      <div class="portrait-card">
+        <img src="images/portrait.jpeg" alt="Clarice Xia">
+      </div>
       <!-- DOG PHOTO: Moomoo -->
       <div class="dog-card">
         <img class="dog-photo" src="images/dog.jpeg" alt="My dog — Chief Emotional Support Officer">
