@@ -372,6 +372,74 @@
     color: var(--divider);
   }
 
+  .timeline-impact {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .tech-details {
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  .tech-details summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    padding: 0.25rem 0;
+  }
+
+  .tech-details summary::-webkit-details-marker { display: none; }
+
+  .tech-details summary::before {
+    content: '+';
+    display: inline-block;
+    width: 0.8rem;
+    transition: transform 0.2s ease;
+  }
+
+  .tech-details[open] summary::before { content: '−'; }
+
+  .tech-details summary:hover { text-decoration: underline; }
+
+  .tech-details summary:focus-visible {
+    outline: 2px solid var(--accent-light);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .tech-details-body {
+    margin-top: 0.6rem;
+    padding: 0.9rem 1rem;
+    background: var(--card-bg);
+    border-radius: 8px;
+    line-height: 1.65;
+  }
+
+  .tech-details-body li {
+    list-style: none;
+    position: relative;
+    padding-left: 1rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .tech-details-body li::before {
+    content: '·';
+    position: absolute;
+    left: 0.2rem;
+    color: var(--accent);
+  }
+
+  .tech-details-body .project-tags { margin-top: 0.8rem; }
+
   /* ===== PROJECTS ===== */
   .projects-grid {
     display: grid;
@@ -734,77 +802,183 @@
   <div class="timeline fade-in stagger-1">
     <div class="timeline-item">
       <div class="timeline-meta">
-        <span class="timeline-role">ML Engineer (Part-time)</span>
-        <span class="timeline-date">Mar 2026 – Jun 2026</span>
+        <span class="timeline-role">Client Support Assistant</span>
+        <span class="timeline-date">Jun 2026 – Present</span>
       </div>
-      <div class="timeline-company">DuoHour Technologies Inc. — Markham, Canada</div>
+      <div class="timeline-company">University of Toronto — Faculty of Dentistry</div>
+      <p class="timeline-impact">Kept a busy faculty running by rolling out 300+ new devices and resolving 100+ support tickets.</p>
       <div class="timeline-desc">
         <ul>
-          <li>Developed and deployed a full-stack bilingual chatbot for DuoHour's website using React and FastAPI; implemented MongoDB vector search with intfloat/multilingual-e5-large-instruct embeddings and cosine similarity for semantic question matching.</li>
-          <li>Designed the QA knowledge base through platform inspection and iterative dev/UI testing; selected API-based embeddings over local sentence-transformer models to resolve production memory constraints, balancing accuracy, model size, and cost.</li>
-          <li>Developed unit tests and implemented CI pipeline for backend services, ensuring code reliability and deployment readiness across web and mobile applications.</li>
+          <li>Rolled out 300+ laptops, desktops and mini PCs across three refresh projects, from setup to faculty-wide delivery.</li>
+          <li>Resolved 100+ hardware, software and network issues for clinical and administrative staff.</li>
+          <li>Coordinated with faculty staff and IT teams on device rollout, account setup and audio/video setup across facilities.</li>
         </ul>
       </div>
+      <details class="tech-details">
+        <summary>Technical details</summary>
+        <div class="tech-details-body">
+          <ul>
+            <li>BIOS configuration, Windows OS imaging and hardware assembly for each refresh project.</li>
+            <li>Network troubleshooting (Cisco connectivity, GlobalProtect VPN, university WiFi) and LAN patching.</li>
+            <li>User account administration in Active Directory; ticketing and hardware inventory in ServiceNow and Excel.</li>
+          </ul>
+          <div class="project-tags">
+            <span>Active Directory</span><span>ServiceNow</span><span>Cisco</span><span>GlobalProtect</span><span>Windows</span>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-meta">
-        <span class="timeline-role">Client Support Assistant</span>
-        <span class="timeline-date">Jun 2026 – Aug 2026</span>
+        <span class="timeline-role">Data Science &amp; ML Engineer</span>
+        <span class="timeline-date">Mar 2026 – Jun 2026</span>
       </div>
-      <div class="timeline-company">University of Toronto — Faculty of Dentistry</div>
+      <div class="timeline-company">DuoHour Technologies Inc. — Markham, Canada</div>
+      <p class="timeline-impact">Helped grow an early-stage marketplace from 40 to 1,800+ service seekers in under 2 months by building the dashboards and experiments that guided product decisions.</p>
       <div class="timeline-desc">
         <ul>
-          <li>Provided day-to-day IT support including laptop reimaging, software installation tailored to client needs, and configuration of Dell docks and peripheral devices.</li>
-          <li>Diagnosed and resolved printer connectivity and hardware issues across the faculty, minimizing downtime for clinical and administrative staff.</li>
+          <li>Built Power BI dashboards on daily and weekly active users, growth and marketplace activity for founder and investor reporting.</li>
+          <li>Found where users were dropping off in the sign-up-to-chat funnel and introduced nudges and referral incentives, improving conversion by 37%.</li>
+          <li>Built two in-app analytics dashboards end to end and audited data quality, contributing to a ~24% improvement in user retention.</li>
+          <li>Ran an A/B test on feed ranking: the more personalized version lowered contact rate by 5.2%, so the team kept the balanced ranking.</li>
+          <li>Built a matching system that recommends the top 5 providers to each user with a plain-language reason for each match, plus a dashboard monitoring quality, conversion and fairness.</li>
+          <li>Launched a bilingual (English/Chinese) website chatbot that answers common user questions.</li>
         </ul>
       </div>
+      <details class="tech-details">
+        <summary>Technical details</summary>
+        <div class="tech-details-body">
+          <ul>
+            <li>Chatbot: React + FastAPI, MongoDB vector search with API-based multilingual embeddings (chosen over local models to fit production memory limits); QA knowledge base built through platform inspection and UI testing.</li>
+            <li>In-app analytics: designed the event tracking schema, MongoDB aggregation pipelines and end-to-end dataflow; built backend APIs and frontend UI.</li>
+            <li>A/B test: hash-based 50/50 sticky bucketing to evaluate budget-overlap signal weighting in Discover ranking.</li>
+            <li>Matching: multi-stage pipeline with rule-based scoring (constraint filtering, behavioral compatibility) and an LLM re-ranking layer that generates bilingual match/mismatch reasoning.</li>
+            <li>Unit tests and CI pipeline for backend services.</li>
+          </ul>
+          <div class="project-tags">
+            <span>Power BI</span><span>MongoDB</span><span>FastAPI</span><span>React</span><span>A/B Testing</span><span>LLMs</span>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-meta">
         <span class="timeline-role">Research Assistant</span>
-        <span class="timeline-date">May 2025 – Present</span>
+        <span class="timeline-date">May 2025 – May 2026</span>
       </div>
-      <div class="timeline-company">University of Toronto — Psychometrics & Responsible AI Lab</div>
+      <div class="timeline-company">University of Toronto — Psychometrics &amp; Responsible AI Lab</div>
+      <p class="timeline-impact">Built an AI translation tool for psychology surveys that improved translation quality by 17.7%, accepted for an oral presentation at IMPS 2026.</p>
       <div class="timeline-desc">
         <ul>
-          <li>Built a domain-specific RAG system using Qdrant for cross-cultural survey translation, achieving 17.7% quality improvement on psychology content.</li>
-          <li>Conducted ablation studies validating retrieval-augmented approaches over direct LLM translation with measurable structural overlap gains.</li>
-          <li>Deployed containerized services to HPC clusters via Docker + SLURM with SSH tunneling for network-isolated environments.</li>
-          <li>Developed embedding-based psychometric network analysis pipeline, applying graph methods (EGA, TMFG) to optimize scale structure with &gt;0.95 stability.</li>
+          <li>Compared leading AI models (Claude, GPT-5, Qwen, Gemini) to find the best setup for translating specialized survey content.</li>
+          <li>Built a simple web app so non-technical researchers can run translations themselves, without coding.</li>
+          <li>Developed a way to check survey quality before collecting any responses, flagging redundant questions to shorten surveys.</li>
         </ul>
       </div>
+      <details class="tech-details">
+        <summary>Technical details</summary>
+        <div class="tech-details-body">
+          <ul>
+            <li>Domain-specific RAG system with Qdrant; LLMs evaluated across temperature settings, scored with COMET; ablation studies against direct LLM translation.</li>
+            <li>Deployed on an HPC cluster via Docker + SLURM, with SSH tunneling for network isolation plus monitoring and health-check scripts.</li>
+            <li>Web interface built with Streamlit and Starlette/uvicorn, dockerized.</li>
+            <li>Embedding-based psychometric pipeline using Qwen3 embeddings (0.6B) and graph methods (EGA, TMFG), keeping construct validity with &gt;0.95 network stability.</li>
+          </ul>
+          <div class="project-tags">
+            <span>Python</span><span>RAG</span><span>Qdrant</span><span>Docker</span><span>SLURM</span><span>Streamlit</span>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-meta">
-        <span class="timeline-role">Data Scientist & Analytics</span>
+        <span class="timeline-role">Data Scientist &amp; Analytics</span>
         <span class="timeline-date">Nov 2024 – Nov 2025</span>
       </div>
       <div class="timeline-company">Wellanding Immigration Inc.</div>
+      <p class="timeline-impact">Turned customer reviews and funnel data into changes that raised customer satisfaction by 25% and conversion by 18%.</p>
       <div class="timeline-desc">
         <ul>
-          <li>Built a multi-platform review analytics system analyzing 2,000+ reviews with bilingual NLP (SnowNLP & BERT), driving operational changes that lifted customer satisfaction by 25%.</li>
-          <li>Developed an LLM-powered chatbot on WeChat Mini Program using GPT-4o, automating 70% of routine inquiries with 4.8/5 user satisfaction.</li>
-          <li>Designed A/B tests and Tableau dashboards for multi-channel funnel analysis, improving conversion rate by 18%.</li>
+          <li>Analyzed 2,000+ customer reviews across platforms in English and Chinese, leading to operational changes that lifted satisfaction by 25%.</li>
+          <li>Designed A/B tests and Tableau dashboards to track the multi-channel funnel, improving conversion by 18%.</li>
+          <li>Launched a WeChat chatbot that handles 70% of routine inquiries, rated 4.8/5 by users.</li>
         </ul>
       </div>
+      <details class="tech-details">
+        <summary>Technical details</summary>
+        <div class="tech-details-body">
+          <ul>
+            <li>Bilingual sentiment analysis with SnowNLP and BERT.</li>
+            <li>Chatbot built on GPT-4o as a WeChat Mini Program.</li>
+          </ul>
+          <div class="project-tags">
+            <span>Tableau</span><span>A/B Testing</span><span>NLP</span><span>GPT-4o</span>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="timeline-item">
       <div class="timeline-meta">
-        <span class="timeline-role">Strategic Data Analyst</span>
+        <span class="timeline-role">Data Analyst Intern</span>
         <span class="timeline-date">Dec 2023 – Mar 2024</span>
       </div>
-      <div class="timeline-company">4Paradigm Co., Ltd.</div>
+      <div class="timeline-company">4Paradigm Co., Ltd. — Beijing, China</div>
+      <p class="timeline-impact">Used customer data for a bank client to improve loan recovery by 8% and lift campaign conversion by up to 25%.</p>
       <div class="timeline-desc">
         <ul>
-          <li>Performed K-means clustering on 500K+ loan users to identify 5 risk profiles, improving debt recovery rate by 8%.</li>
-          <li>Optimized segmentation pipeline migrating HiveSQL → GaussDB for 30M+ records, achieving 89% faster execution.</li>
-          <li>Delivered 12 strategic consulting reports for China Everbright Bank on customer management and marketing optimization.</li>
+          <li>Grouped 500K+ loan customers into 5 risk profiles that the collections team used to prioritize outreach, improving recovery rate by 8%.</li>
+          <li>Analyzed 300K+ applicants' behavior to find approved customers who weren't using their credit, then designed targeted promotions that raised conversion by up to 25%.</li>
+          <li>Made a core reporting pipeline covering 30M+ customer records run 89% faster.</li>
+          <li>Delivered 12 strategy reports to China Everbright Bank on customer management and marketing.</li>
         </ul>
       </div>
+      <details class="tech-details">
+        <summary>Technical details</summary>
+        <div class="tech-details-body">
+          <ul>
+            <li>K-means clustering (scikit-learn) with feature engineering; validated with elbow method and silhouette analysis.</li>
+            <li>Behavioral analysis in PySpark on withdrawal patterns, ad/coupon clicks and loan activation.</li>
+            <li>Migrated the ETL pipeline from HiveSQL to GaussDB with query optimization and indexing.</li>
+          </ul>
+          <div class="project-tags">
+            <span>SQL</span><span>PySpark</span><span>scikit-learn</span><span>HiveSQL</span><span>GaussDB</span>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-meta">
+        <span class="timeline-role">Data Analyst Intern</span>
+        <span class="timeline-date">Jul 2023 – Sep 2023</span>
+      </div>
+      <div class="timeline-company">China Construction Bank — Xi'an, China</div>
+      <p class="timeline-impact">Automated the bank's routine reporting and built quarterly merchant reports that helped grow card acquisition revenue by 10%.</p>
+      <div class="timeline-desc">
+        <ul>
+          <li>Automated daily and monthly reports covering 300K+ corporate customers to support microfinance and risk teams.</li>
+          <li>Produced quarterly point-of-sale reports from 1M+ merchant transactions, contributing to a 10% increase in offline card acquisition revenue.</li>
+          <li>Protected customer privacy by masking personal identifiers before any analysis.</li>
+          <li>Built a model that flags financial risk from written credit approval notes with 91.7% accuracy, filling a gap where default data was scarce.</li>
+        </ul>
+      </div>
+      <details class="tech-details">
+        <summary>Technical details</summary>
+        <div class="tech-details-body">
+          <ul>
+            <li>ETL pipelines in SQL and SAS Enterprise Guide across 300K+ customer and 4K+ credit card records.</li>
+            <li>SQL-based de-identification using MD5 hashing of card numbers and government IDs.</li>
+            <li>Risk labels mined from 100K+ credit approval opinions; TF-IDF features with XGBoost and CNN classifiers (XGBoost best at 91.7%).</li>
+          </ul>
+          <div class="project-tags">
+            <span>SQL</span><span>SAS</span><span>XGBoost</span><span>TF-IDF</span>
+          </div>
+        </div>
+      </details>
     </div>
   </div>
 </section>
