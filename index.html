@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clarice Xia — MLE & Data Scientist</title>
+<title>Clarice Xia — Data Analyst & Data Scientist</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -100,6 +100,46 @@
     align-items: center;
     padding: 8rem 3rem 4rem;
     position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+  .hero-bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(245,240,234,0.92) 0%, rgba(245,240,234,0.80) 40%, rgba(245,240,234,0.55) 100%);
+  }
+
+  .hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: rgba(245,240,234,0.75);
+    border: 1px solid var(--divider);
+    border-radius: 100px;
+    padding: 0.4rem 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-status::before {
+    content: '';
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* ===== PHOTO BANNER ===== */
+  .photo-banner { width: 100%; height: 440px; overflow: hidden; position: relative; }
+  .photo-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 70%; display: block; }
+  .photo-banner::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(to bottom, rgba(245,240,234,1) 0%, rgba(245,240,234,0) 25%, rgba(245,240,234,0) 50%, rgba(245,240,234,1) 100%);
+  }
+  .photo-banner .photo-caption {
+    position: absolute; bottom: 1rem; right: 1.5rem;
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75); z-index: 1;
   }
 
   .hero-inner {
@@ -107,9 +147,11 @@
     margin: 0 auto;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-text h1 {
@@ -250,6 +292,14 @@
     font-weight: 500;
     font-size: 0.95rem;
   }
+
+  /* ===== DOG CARD ===== */
+  .dog-card { border-radius: 16px; overflow: hidden; background: var(--card-bg); border: 1px solid var(--divider); transition: border-color 0.3s; }
+  .dog-card:hover { border-color: var(--accent-light); }
+  .dog-card .dog-photo { width: 100%; height: 240px; object-fit: cover; display: block; background: var(--divider); }
+  .dog-card .dog-caption { padding: 1rem 1.2rem; text-align: center; }
+  .dog-card .dog-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; font-style: italic; color: var(--ink); }
+  .dog-card .dog-role { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
 
   /* ===== SKILLS ===== */
   .skills-container {
@@ -544,6 +594,12 @@
   }
 
   /* ===== CONTACT ===== */
+  .contact-wrapper { position: relative; overflow: hidden; }
+  .contact-bg { position: absolute; inset: 0; z-index: 0; }
+  .contact-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 67%; }
+  .contact-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(245,240,234,0.75) 0%, rgba(245,240,234,0.60) 50%, rgba(245,240,234,0.75) 100%); }
+  .contact-wrapper .contact-section { position: relative; z-index: 1; }
+
   .contact-section {
     text-align: center;
     padding: 8rem 3rem;
@@ -640,6 +696,8 @@
     .projects-grid { grid-template-columns: 1fr; }
     .timeline { padding-left: 2rem; }
     .contact-section { padding: 5rem 1.5rem; }
+    .photo-banner { height: 220px; }
+    .dog-card .dog-photo { height: 200px; }
   }
 
   /* ===== LANGUAGE BADGE ===== */
@@ -686,50 +744,18 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
+  <div class="hero-bg">
+    <img src="images/rainy-plants.jpeg" alt="" loading="eager">
+  </div>
   <div class="hero-inner">
     <div class="hero-text">
-      <h1 class="fade-in">Building <br><span class="italic">intelligent</span><br>systems.</h1>
-      <p class="subtitle fade-in stagger-1">ML Engineer & Data Scientist crafting RAG pipelines, NLP systems, and data-driven solutions — currently finishing my M.Eng. at the University of Toronto.</p>
+      <p class="hero-status fade-in">Open to Data Analyst &amp; Data Scientist roles · Toronto</p>
+      <h1 class="fade-in">Turning <br><span class="italic">data</span> into<br>decisions.</h1>
+      <p class="subtitle fade-in stagger-1">Data Analyst &amp; Data Scientist who turns messy data into dashboards, experiments and clear recommendations, with the machine learning skills to go further when a problem calls for it. M.Eng., University of Toronto.</p>
       <div class="hero-links fade-in stagger-2">
         <a href="#contact" class="btn-primary">Get in Touch</a>
-        <a href="#projects" class="btn-outline">View Work</a>
+        <a href="#experience" class="btn-outline">View Work</a>
       </div>
-    </div>
-    <div class="hero-art fade-in stagger-3">
-      <svg viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg">
-        <!-- Generative artsy circles -->
-        <circle cx="240" cy="240" r="200" fill="none" stroke="#d6cfc5" stroke-width="1"/>
-        <circle cx="240" cy="240" r="160" fill="none" stroke="#d6cfc5" stroke-width="1"/>
-        <circle cx="240" cy="240" r="120" fill="none" stroke="#d6cfc5" stroke-width="1"/>
-        <circle cx="240" cy="240" r="80" fill="none" stroke="#c45d3e" stroke-width="1.5" stroke-dasharray="4 8"/>
-        <!-- Data-inspired dots -->
-        <circle cx="240" cy="40" r="5" fill="#c45d3e" opacity="0.8"/>
-        <circle cx="400" cy="140" r="4" fill="#c45d3e" opacity="0.5"/>
-        <circle cx="420" cy="280" r="6" fill="#c45d3e" opacity="0.7"/>
-        <circle cx="320" cy="420" r="3" fill="#c45d3e" opacity="0.4"/>
-        <circle cx="140" cy="400" r="5" fill="#c45d3e" opacity="0.6"/>
-        <circle cx="60" cy="260" r="4" fill="#c45d3e" opacity="0.5"/>
-        <circle cx="80" cy="120" r="3" fill="#c45d3e" opacity="0.3"/>
-        <circle cx="340" cy="80" r="3" fill="#e8a990" opacity="0.6"/>
-        <!-- Connecting lines -->
-        <line x1="240" y1="40" x2="400" y2="140" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <line x1="400" y1="140" x2="420" y2="280" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <line x1="420" y1="280" x2="320" y2="420" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <line x1="320" y1="420" x2="140" y2="400" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <line x1="140" y1="400" x2="60" y2="260" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <line x1="60" y1="260" x2="80" y2="120" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <line x1="80" y1="120" x2="240" y2="40" stroke="#d6cfc5" stroke-width="0.5" opacity="0.5"/>
-        <!-- Center accent -->
-        <circle cx="240" cy="240" r="12" fill="#c45d3e" opacity="0.15"/>
-        <circle cx="240" cy="240" r="4" fill="#c45d3e"/>
-        <!-- Floating arcs -->
-        <path d="M 140 100 A 180 180 0 0 1 380 160" fill="none" stroke="#e8a990" stroke-width="1" opacity="0.4"/>
-        <path d="M 360 340 A 180 180 0 0 1 100 360" fill="none" stroke="#e8a990" stroke-width="1" opacity="0.3"/>
-        <!-- Small decorative elements -->
-        <rect x="170" y="170" width="2" height="2" fill="#c45d3e" opacity="0.4" transform="rotate(45 171 171)"/>
-        <rect x="310" y="300" width="2" height="2" fill="#c45d3e" opacity="0.4" transform="rotate(45 311 301)"/>
-        <rect x="200" y="340" width="2" height="2" fill="#c45d3e" opacity="0.3" transform="rotate(45 201 341)"/>
-      </svg>
     </div>
   </div>
 </section>
@@ -738,39 +764,46 @@
 <div class="section-divider"><hr></div>
 <section id="about">
   <p class="section-label fade-in">About</p>
-  <h2 class="section-title fade-in">At the intersection of<br>data & intelligence.</h2>
+  <h2 class="section-title fade-in">From messy data<br>to clear decisions.</h2>
   <div class="about-grid">
     <div class="about-text fade-in stagger-1">
-      <p>I'm Clarice — an ML Engineer and Data Scientist with a background spanning NLP, retrieval-augmented generation, and applied analytics. I love building systems that turn messy, complex data into real-world impact.</p>
-      <p>Currently pursuing my M.Eng. at the University of Toronto, I've worked on projects ranging from domain-specific RAG systems for cross-cultural psychometric research to production chatbots and customer analytics platforms. I'm driven by the challenge of making AI solutions that are robust, interpretable, and genuinely useful.</p>
-      <p>When I'm not training models or optimizing pipelines, you'll find me exploring the intersection of language and technology — I speak English, Mandarin, and Japanese fluently.</p>
+      <p>I'm Clarice, a data analyst and data scientist. I like finding the story in the numbers: where users drop off, which customers matter most, and whether a change actually worked. Then I turn that into dashboards and recommendations people can act on.</p>
+      <p>I've built Power BI dashboards for a startup's founder and investors, run A/B tests that shaped product decisions, segmented 500K+ bank customers by risk, and automated reporting at China Construction Bank. When a problem needs more than analysis, I can build the model or pipeline too, from NLP and retrieval systems to recommendation logic.</p>
+      <p>I'm finishing my M.Eng. at the University of Toronto. Outside of data, you'll find me behind a camera shooting landscapes and street photography, or out with my dog, Moomoo. I speak English, Mandarin and Japanese.</p>
 
       <div class="skills-container" style="margin-top: 2rem;">
-        <span class="skill-tag highlight">Python</span>
-        <span class="skill-tag highlight">PyTorch</span>
         <span class="skill-tag highlight">SQL</span>
-        <span class="skill-tag">LangChain</span>
-        <span class="skill-tag">RAG Systems</span>
-        <span class="skill-tag">scikit-learn</span>
-        <span class="skill-tag">PySpark</span>
-        <span class="skill-tag">Qdrant</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag highlight">Python</span>
+        <span class="skill-tag highlight">Power BI</span>
+        <span class="skill-tag highlight">Tableau</span>
         <span class="skill-tag">A/B Testing</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Statistical Analysis</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">PySpark</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">scikit-learn</span>
+        <span class="skill-tag">NLP</span>
+        <span class="skill-tag">RAG Systems</span>
+        <span class="skill-tag">PyTorch</span>
         <span class="skill-tag">Git</span>
-        <span class="skill-tag">HPC / SLURM</span>
       </div>
     </div>
     <div class="about-details fade-in stagger-2">
+      <div class="dog-card">
+        <img class="dog-photo" src="images/dog.jpeg" alt="My dog Moomoo">
+        <div class="dog-caption">
+          <div class="dog-name">Moomoo</div>
+          <div class="dog-role">Chief Emotional Support Officer</div>
+        </div>
+      </div>
       <div class="detail-card">
         <div class="label">Location</div>
         <div class="value">Toronto, Canada</div>
       </div>
       <div class="detail-card">
         <div class="label">Focus Areas</div>
-        <div class="value">NLP · RAG · ML Systems · Analytics</div>
+        <div class="value">Analytics · BI Dashboards · Experimentation · Machine Learning · NLP</div>
       </div>
       <div class="detail-card">
         <div class="label">Languages</div>
@@ -785,7 +818,7 @@
           </div>
           <div class="lang-badge">
             <span class="lang-name">日本語</span>
-            <span class="lang-level">Fluent</span>
+            <span class="lang-level">Intermediate</span>
           </div>
         </div>
       </div>
@@ -793,8 +826,13 @@
   </div>
 </section>
 
+<!-- ===== PHOTO BANNER: Japan street ===== -->
+<div class="photo-banner">
+  <img src="images/japan-street.jpeg" alt="Street photography in Tokyo, Japan" loading="lazy">
+  <span class="photo-caption">Tokyo, Japan</span>
+</div>
+
 <!-- ===== EXPERIENCE ===== -->
-<div class="section-divider"><hr></div>
 <section id="experience">
   <p class="section-label fade-in">Experience</p>
   <h2 class="section-title fade-in">Where I've <span style="font-style:italic; color: var(--accent);">made impact</span>.</h2>
@@ -992,9 +1030,22 @@
   <div class="projects-grid">
     <div class="project-card fade-in stagger-1">
       <div class="project-number">01</div>
+      <h3>Bilingual Sentiment Analytics Engine</h3>
+      <div class="project-org">Wellanding Immigration · 2024</div>
+      <p>Multi-platform review scraping and bilingual sentiment analysis system using SnowNLP & BERT. Uncovered that 60% of negative feedback related to response time, driving a 25% satisfaction increase.</p>
+      <div class="project-tags">
+        <span>BERT</span>
+        <span>SnowNLP</span>
+        <span>NLP</span>
+        <span>BeautifulSoup</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in stagger-2">
+      <div class="project-number">02</div>
       <h3>Agentic AI Data Analysis Platform</h3>
       <div class="project-org">University of Toronto · 2025</div>
-      <p>End-to-end agentic data analysis system using MCP-based agents with RAG pipeline and Qdrant for semantic table search. Built a Streamlit interface for natural language report generation — no SQL knowledge required.</p>
+      <p>Lets anyone ask questions of a database in plain English and get a report back, with no SQL needed. Built with MCP-based agents, a RAG pipeline over Qdrant for finding the right tables, and a Streamlit interface.</p>
       <div class="project-tags">
         <span>Python</span>
         <span>MCP</span>
@@ -1004,8 +1055,8 @@
       </div>
     </div>
 
-    <div class="project-card fade-in stagger-2">
-      <div class="project-number">02</div>
+    <div class="project-card fade-in stagger-3">
+      <div class="project-number">03</div>
       <h3>Self-Refining Text-to-SQL Agents</h3>
       <div class="project-org">University of Toronto · 2025</div>
       <p>Implemented ReAct and Reflexion frameworks with episodic and semantic memory systems, boosting query generation accuracy from ~55% baseline to &gt;90% through reflection-based error correction.</p>
@@ -1017,8 +1068,8 @@
       </div>
     </div>
 
-    <div class="project-card fade-in stagger-3">
-      <div class="project-number">03</div>
+    <div class="project-card fade-in stagger-4">
+      <div class="project-number">04</div>
       <h3>Cross-Cultural RAG Translation System</h3>
       <div class="project-org">Psychometrics & Responsible AI Lab · 2025</div>
       <p>Domain-specific retrieval-augmented generation system for translating psychological surveys across cultures. Validated through ablation studies with COMET metrics and Jaccard similarity analysis.</p>
@@ -1028,19 +1079,6 @@
         <span>Docker</span>
         <span>HPC</span>
         <span>COMET</span>
-      </div>
-    </div>
-
-    <div class="project-card fade-in stagger-4">
-      <div class="project-number">04</div>
-      <h3>Bilingual Sentiment Analytics Engine</h3>
-      <div class="project-org">Wellanding Immigration · 2024</div>
-      <p>Multi-platform review scraping and bilingual sentiment analysis system using SnowNLP & BERT. Uncovered that 60% of negative feedback related to response time, driving a 25% satisfaction increase.</p>
-      <div class="project-tags">
-        <span>BERT</span>
-        <span>SnowNLP</span>
-        <span>NLP</span>
-        <span>BeautifulSoup</span>
       </div>
     </div>
 
@@ -1060,8 +1098,13 @@
   </div>
 </section>
 
+<!-- ===== PHOTO BANNER: Mountains ===== -->
+<div class="photo-banner">
+  <img src="images/mountains-wide.jpeg" alt="Mountain landscape photography" loading="lazy">
+  <span class="photo-caption">Photographed by Clarice</span>
+</div>
+
 <!-- ===== EDUCATION ===== -->
-<div class="section-divider"><hr></div>
 <section id="education">
   <p class="section-label fade-in">Education</p>
   <h2 class="section-title fade-in">Academic foundation.</h2>
@@ -1097,11 +1140,14 @@
 </section>
 
 <!-- ===== CONTACT ===== -->
-<div class="section-divider"><hr></div>
+<div class="contact-wrapper">
+<div class="contact-bg">
+  <img src="images/desert-road.jpeg" alt="" loading="lazy">
+</div>
 <section id="contact" class="contact-section">
   <p class="section-label fade-in">Contact</p>
   <h2 class="section-title fade-in">Let's <span style="font-style:italic; color: var(--accent);">connect</span>.</h2>
-  <p class="contact-sub fade-in stagger-1">Open to MLE and Data Scientist roles — feel free to reach out.</p>
+  <p class="contact-sub fade-in stagger-1">Open to Data Analyst and Data Scientist roles, and ML Engineer roles with a strong data focus. Feel free to reach out.</p>
   <div class="contact-links fade-in stagger-2">
     <a href="mailto:xiaclarice1@gmail.com">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -1117,6 +1163,7 @@
     </a>
   </div>
 </section>
+</div>
 
 <footer>
   <p>© 2026 Clarice Xia · Built with care.</p>
@@ -1143,6 +1190,15 @@
       nav.style.boxShadow = 'none';
     }
   });
+
+  // Subtle parallax on photo banners
+  const banners = document.querySelectorAll('.photo-banner img');
+  window.addEventListener('scroll', () => {
+    banners.forEach(img => {
+      const rect = img.parentElement.getBoundingClientRect();
+      img.style.transform = `translateY(${rect.top * 0.15}px) scale(1.1)`;
+    });
+  }, { passive: true });
 </script>
 
 </body>
